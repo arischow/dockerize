@@ -1,0 +1,19 @@
+version: "2"
+
+services:
+  nginx:
+    restart: always
+    container_name: nginx-example
+    image: nginx
+    expose:
+      - 80
+    environment:
+      - VIRTUAL_HOST=your.domain.com
+      - LETSENCRYPT_HOST=your.domain.com
+      - LETSENCRYPT_EMAIL=your@email.com
+    networks:
+      - nginx-proxy
+
+networks:
+  nginx-proxy:
+    external: true
